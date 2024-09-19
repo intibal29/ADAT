@@ -1,6 +1,46 @@
 
 //ctividad 1: Realiza un programa Java que muestre los ficheros de un directorio. El nombre del directorio se pasará al programa desde la línea de comandos al ejecutarlo
 
+import java.io.File;
+
+public class ListFilesInDirectory {
+
+    public static void main(String[] args) {
+        // Verificar si se ha pasado el nombre del directorio como argumento
+        if (args.length != 1) {
+            System.out.println("Uso: java ListFilesInDirectory <nombre_del_directorio>");
+          
+        }
+
+        // Obtener el nombre del directorio desde los argumentos
+        String directoryPath = args[0];
+        File directory = new File(directoryPath);
+
+        // Verificar si el directorio existe y es un directorio
+        if (!directory.exists()) {
+            System.out.println("El directorio especificado no existe.");
+            
+        }
+
+        if (!directory.isDirectory()) {
+            System.out.println("El camino especificado no es un directorio.");
+            
+        }
+
+        // Obtener la lista de archivos y subdirectorios
+        String[] files = directory.list();
+
+        // Verificar si se pudo obtener la lista de archivos
+        if (files != null) {
+            System.out.println("Archivos y subdirectorios en " + directoryPath + ":");
+            for (String file : files) {
+                System.out.println(file);
+            }
+        } else {
+            System.out.println("No se pudo obtener la lista de archivos.");
+        }
+    }
+}
 
 /*Actividad 2: Crea un fichero de texto con algún editor de textos y después realiza un programa
 Java que visualice su contenido. Cambia el programa Java para que el nombre del fichero se
