@@ -47,9 +47,73 @@ Java que visualice su contenido. Cambia el programa Java para que el nombre del 
 acepte al ejecutar desde la línea de comandos
 acepte al ejecutar desde la línea de comandos*/
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadFile {
+
+    public static void main(String[] args) {
+        // Verificar si se ha pasado el nombre del archivo como argumento
+        if (args.length != 1) {
+            System.out.println("Uso: java ReadFile <nombre_del_archivo>");
+        }
+
+        // Obtener el nombre del archivo desde los argumentos
+        String fileName = args[0];
+
+        // Intentar leer el contenido del archivo
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            // Leer el archivo línea por línea
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer el archivo: " + e.getMessage());
+        }
+    }
+}
+
 
 /*Actividad 3: Crea un programa Java que reciba un identificador de empleado desde la línea de
 comandos y visualice sus datos. Si el empleado no existe debe visualizar mensaje indicándolo.*/
+import java.util.HashMap;
+import java.util.Map;
+
+public class EmployeeLookup {
+
+    // Simulación de una "base de datos" de empleados usando un HashMap
+    private static final Map<String, String> employees = new HashMap<>();
+
+    static {
+        // Inicializar algunos datos de empleados para la demostración
+        employees.put("E001", "Juan Pérez, Developer, IT");
+        employees.put("E002", "Ana Gómez, Analyst, Marketing");
+        employees.put("E003", "Luis Fernández, Manager, HR");
+    }
+
+    public static void main(String[] args) {
+        // Verificar si se ha pasado el identificador del empleado como argumento
+        if (args.length != 1) {
+            System.out.println("Uso: <identificador_del_empleado>");
+            
+        }
+
+        // Obtener el identificador del empleado desde los argumentos
+        String employeeId = args[0];
+
+        // Buscar y mostrar los datos del empleado
+        String employeeData = employees.get(employeeId);
+
+        if (employeeData != null) {
+            System.out.println("Datos del empleado con ID " + employeeId + ": " + employeeData);
+        } else {
+            System.out.println("Empleado con ID " + employeeId + " no existe.");
+        }
+    }
+}
+
 
 
 /*Actividad 4: Crea un programa Java que reciba desde la línea de comandos un identificador
