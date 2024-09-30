@@ -13,8 +13,13 @@ public class ListFilesInDirectory {
         }
 
         // Obtener el nombre del directorio desde los argumentos
+<<<<<<< HEAD
         String directoryPath = args[0];
         File directory = new File(directoryPath);
+=======
+        String path = args[0];
+        File directory = new File(path);
+>>>>>>> 1664f00 (1)
 
         // Verificar si el directorio existe y es un directorio
         if (!directory.exists()) {
@@ -32,7 +37,11 @@ public class ListFilesInDirectory {
 
         // Verificar si se pudo obtener la lista de archivos
         if (files != null) {
+<<<<<<< HEAD
             System.out.println("Archivos y subdirectorios en " + directoryPath + ":");
+=======
+            System.out.println("Archivos y subdirectorios en " + path + ":");
+>>>>>>> 1664f00 (1)
             for (String file : files) {
                 System.out.println(file);
             }
@@ -78,6 +87,7 @@ public class ReadFile {
 
 /*Actividad 3: Crea un programa Java que reciba un identificador de empleado desde la línea de
 comandos y visualice sus datos. Si el empleado no existe debe visualizar mensaje indicándolo.*/
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
 
@@ -91,12 +101,30 @@ public class EmployeeLookup {
         employees.put("E001", "Juan Pérez, Developer, IT");
         employees.put("E002", "Ana Gómez, Analyst, Marketing");
         employees.put("E003", "Luis Fernández, Manager, HR");
+=======
+
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class Empleados {
+
+    // Simulación de una "base de datos" de empleados usando un HashMap
+    private static final Map<String, String> empleados = new HashMap<>();
+
+    static {
+        // Inicializar algunos datos de empleados para la demostración
+        empleados.put("E001", "Juan Pérez, Desarrollador, IT");
+        empleados.put("E002", "Ana Gómez, Analista, Marketing");
+        empleados.put("E003", "Luis Fernández, Gerente, RRHH");
+>>>>>>> 1664f00 (1)
     }
 
     public static void main(String[] args) {
         // Verificar si se ha pasado el identificador del empleado como argumento
         if (args.length != 1) {
             System.out.println("Uso: <identificador_del_empleado>");
+<<<<<<< HEAD
             
         }
 
@@ -110,6 +138,21 @@ public class EmployeeLookup {
             System.out.println("Datos del empleado con ID " + employeeId + ": " + employeeData);
         } else {
             System.out.println("Empleado con ID " + employeeId + " no existe.");
+=======
+            System.exit(1);  // Terminar el programa si no se proporciona el ID correcto
+        }
+
+        // Obtener el identificador del empleado desde los argumentos
+        String identificadorEmpleado = args[0];
+
+        // Buscar y mostrar los datos del empleado
+        String datosEmpleado = empleados.get(identificadorEmpleado);
+
+        if (datosEmpleado != null) {
+            System.out.println("Datos del empleado con ID " + identificadorEmpleado + ": " + datosEmpleado);
+        } else {
+            System.out.println("Empleado con ID " + identificadorEmpleado + " no existe.");
+>>>>>>> 1664f00 (1)
         }
     }
 }
